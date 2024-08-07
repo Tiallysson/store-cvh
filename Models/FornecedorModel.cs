@@ -29,5 +29,7 @@ namespace Models
         [MaxLength(128)]
         [Column("email")]
         public string Email { get; set; }
+
+        public ICollection<Produto> Produtos { get; set; }
     }
 }

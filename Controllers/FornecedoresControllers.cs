@@ -27,7 +27,7 @@ namespace Controllers
             return await _fornecedorServices.Cadastrar(fornecedorDto);
         }
 
-        // GET: api/fornecedores/{idProduto}
+        // GET: api/fornecedores/{idFornecedor}
         [HttpGet("{idFornecedor}")]
         public async Task<ActionResult> ObterPelaId(long idFornecedor)
         {

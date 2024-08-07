@@ -5,7 +5,7 @@ namespace PetHealth.Services.Abstracts
 {
     public interface IUsuarioServices
     {
-        Task<ActionResult> RegistrarUsuario(UsuarioDTO usuarioDto);
+        Task<ActionResult> RegistrarUsuario([FromBody]UsuarioDTO usuarioDto);
         Task<ActionResult> ConsultarUsuario(long idUsuario);
 
     }

@@ -23,7 +23,7 @@ namespace Models
 
         [ForeignKey("Fornecedores")]
         [Column("id_fornecedor")] 
-        public long FornecedorId {get; set;}
+        public long IdFornecedor {get; set;}
         
         public Fornecedor Fornecedor {get; set;}
     }

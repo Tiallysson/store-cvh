@@ -32,6 +32,8 @@ builder.Services.AddDbContext<PetHealthDbContext>(options =>
         new MySqlServerVersion(new Version(8, 0, 39))));
 
 builder.Services.AddScoped<IUsuarioServices, UsuariosServices>();
+builder.Services.AddScoped<IFornecedoresServices, FornecedoresServices>();
+builder.Services.AddScoped<IProdutosServices, ProdutosServices>();
 
 builder.Services.AddControllers();
 

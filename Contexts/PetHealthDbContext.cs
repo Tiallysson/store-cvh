@@ -15,7 +15,6 @@ namespace Contexts
         public DbSet<Credencial> Credenciais { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
-        // public DbSet<Pedido> Pedidos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,6 +43,11 @@ namespace Contexts
                 .HasOne(c => c.Usuario)
                 .WithOne(u => u.Credencial)
                 .HasForeignKey<Credencial>(c => c.UsuarioId);
+
+            modelBuilder.Entity<Produto>()
+                .HasOne(p => p.Fornecedor)
+                .WithMany(f => f.Produtos)
+                .HasForeignKey(p => p.IdFornecedor);
         }
     }
 }

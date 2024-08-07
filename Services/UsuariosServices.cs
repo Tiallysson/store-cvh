@@ -20,7 +20,7 @@ namespace PetHealth.Services
             _context = context;
         }
 
-        public async Task<ActionResult> RegistrarUsuario(UsuarioDTO usuarioDto)
+        public async Task<ActionResult> RegistrarUsuario([FromBody]UsuarioDTO usuarioDto)
         {
 
             if (usuarioDto == null)

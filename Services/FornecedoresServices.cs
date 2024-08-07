@@ -18,11 +18,11 @@ namespace PetHealth.Services
             _context = context;
         }
 
-        public async Task<ActionResult> Cadastrar(FornecedorDto fornecedorDto)
+        public async Task<ActionResult> Cadastrar([FromBody]FornecedorDto fornecedorDto)
         {
             if (fornecedorDto == null)
             {
-                return new BadRequestObjectResult("Usuário inválido.");
+                return new BadRequestObjectResult("Fornecedor inválido.");
             }
 
             var FornecedorExiste = await _context.Fornecedores.Where(f => f.Cnpj == fornecedorDto.Cnpj).FirstOrDefaultAsync();
