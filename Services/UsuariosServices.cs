@@ -1,4 +1,5 @@
 ﻿using Contexts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -8,6 +9,7 @@ using PetHealth.Services.Abstracts;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using PetHealth.Utilities;
 
 namespace PetHealth.Services
 {
@@ -52,7 +54,7 @@ namespace PetHealth.Services
                 Credencial = new Credencial
                 {
                     Email = usuarioDto.Credencial.Email,
-                    Senha = usuarioDto.Credencial.Senha
+                    Senha = PasswordHelper.HashPassword(usuarioDto.Credencial.Senha)
                 }
             };
 
