@@ -17,7 +17,7 @@ namespace PetHealth.Services
             _context = context;
         }
 
-        public async Task<ActionResult> CadastrarProduto([FromBody]ProdutoDto produtoDto)
+        public async Task<ActionResult> CadastrarProduto(ProdutoDto produtoDto)
         {
             if (produtoDto == null)
             {

@@ -5,6 +5,9 @@ using Contexts;
 using Microsoft.Exchange.WebServices.Data;
 using PetHealth.Services.Abstracts;
 using PetHealth.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +40,7 @@ builder.Services.AddScoped<IProdutosServices, ProdutosServices>();
 
 builder.Services.AddControllers();
 
+    ;
 // Adiciona o Swagger
 builder.Services.AddSwaggerGen(c =>
 {

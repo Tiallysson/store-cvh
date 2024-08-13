@@ -35,5 +35,12 @@ namespace Controllers
         {
             return await _usuarioServices.ConsultarUsuario(idUsuario);
         }
+
+        // POST: api/contas/login
+        [HttpPost("login")]
+        public async Task<ActionResult> Login(CredencialDTO credencialDTO)
+        {
+            return await _usuarioServices.Login(credencialDTO);
+        }
     }
 }

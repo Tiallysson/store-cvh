@@ -7,6 +7,6 @@ namespace PetHealth.Services.Abstracts
     {
         Task<ActionResult> RegistrarUsuario([FromBody]UsuarioDTO usuarioDto);
         Task<ActionResult> ConsultarUsuario(long idUsuario);
-
+        Task<ActionResult> Login(CredencialDTO credencialDTO);
     }
 }

@@ -22,7 +22,7 @@ namespace PetHealth.Services
             _context = context;
         }
 
-        public async Task<ActionResult> RegistrarUsuario([FromBody]UsuarioDTO usuarioDto)
+        public async Task<ActionResult> RegistrarUsuario(UsuarioDTO usuarioDto)
         {
 
             if (usuarioDto == null)
@@ -30,7 +30,14 @@ namespace PetHealth.Services
                 return new BadRequestObjectResult("Usuario inválido.");
             }
 
-            var UsuarioExiste = await _context.Usuarios.Where(u => u.Cpf == usuarioDto.Cpf).FirstOrDefaultAsync();
+            var UsuarioExiste = await _context.Usuarios
+                .Where(u => u.Cpf == usuarioDto.Cpf)
+                .FirstOrDefaultAsync();
+
+            var EmailExiste = await _context.Usuarios
+                .Where(u => u.Credencial.Email == usuarioDto.Credencial.Email)
+                .FirstOrDefaultAsync();
+
             if (UsuarioExiste != null)
             {
                 return new BadRequestObjectResult("Usuário existente com esse CPF!");
@@ -90,7 +97,6 @@ namespace PetHealth.Services
                     return new NotFoundResult();
                 }
 
-                // return Ok(
                 var usuarioResponse = new UsuarioResponse
                 {
                     Id = usuario.Id,
@@ -116,6 +122,21 @@ namespace PetHealth.Services
             {
                 return new ObjectResult($"Erro interno: {ex.Message}") { StatusCode = 500 };
             }
+        }
+
+        public async Task<ActionResult> Login(CredencialDTO credencialDTO)
+        {
+            var CredencialExiste = await _context.Credenciais
+                .Where(c => c.Email == credencialDTO.Email )
+                .Where(c => c.Senha == PasswordHelper.HashPassword(credencialDTO.Senha) )
+                .FirstOrDefaultAsync();
+
+            if (CredencialExiste == null)
+            {
+                return new BadRequestObjectResult("Email e ou senha incorretos.");
+            }
+
+            return new OkObjectResult("Usuário autenticado.");
         }
     }
 }

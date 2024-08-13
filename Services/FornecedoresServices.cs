@@ -18,7 +18,7 @@ namespace PetHealth.Services
             _context = context;
         }
 
-        public async Task<ActionResult> Cadastrar([FromBody]FornecedorDto fornecedorDto)
+        public async Task<ActionResult> Cadastrar(FornecedorDto fornecedorDto)
         {
             if (fornecedorDto == null)
             {

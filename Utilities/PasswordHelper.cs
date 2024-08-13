@@ -21,5 +21,11 @@ namespace PetHealth.Utilities
                 return sb.ToString();
             }
         }
+
+        public static bool VerifyPassword(string enteredPassword, string storedHashedPassword)
+        {
+            return HashPassword(enteredPassword) == storedHashedPassword;
+        }
     }
 }
+
